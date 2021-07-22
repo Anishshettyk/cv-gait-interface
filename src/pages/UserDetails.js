@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { theme, mixins } from '../styles';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import { useDispatch } from 'react-redux';
+import { setUser, makeNotification } from '../redux';
+import { useHistory } from 'react-router-dom';
 
 import { IoArrowForwardOutline } from 'react-icons/io5';
 
@@ -55,9 +58,29 @@ const FormContainer = styled.form`
 
 const UserDetails = () => {
   const classes = useStyles();
+  const [fullName, setFullName] = useState('');
+  const [emailId, setEmailId] = useState('');
+  const [age, setAge] = useState('');
+  const [height, setHeight] = useState('');
+  const [weight, setWeight] = useState('');
+
+  const history = useHistory();
+  const dispatch = useDispatch();
+  // const notification = useSelector((state) => state.notification);
+
+  const submitUserDetails = (event) => {
+    event.preventDefault();
+    if (fullName && emailId && age && height && weight) {
+      const userDetails = { fullName, emailId, age, height, weight };
+      dispatch(setUser(userDetails));
+      history.push('/upload-video');
+    } else {
+      dispatch(makeNotification({ message: `Please enter all the details`, variant: 'info', duration: 2000 }));
+    }
+  };
   return (
     <StyledUserContainer>
-      <FormContainer>
+      <FormContainer onSubmit={submitUserDetails}>
         <h1>Enter your details</h1>
         <div className={classes.textFieldContainer}>
           <TextField
@@ -68,6 +91,8 @@ const UserDetails = () => {
             className={classes.textField}
             placeholder="Enter your full name"
             type="text"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
           />
           <TextField
             id="outlined-basic"
@@ -77,6 +102,8 @@ const UserDetails = () => {
             className={classes.textField}
             placeholder="Enter your email id"
             type="email"
+            value={emailId}
+            onChange={(e) => setEmailId(e.target.value)}
           />
           <TextField
             id="outlined-basic"
@@ -86,6 +113,8 @@ const UserDetails = () => {
             className={classes.textField}
             placeholder="Enter your age"
             type="number"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
           />
           <TextField
             id="outlined-basic"
@@ -95,6 +124,8 @@ const UserDetails = () => {
             className={classes.textField}
             placeholder="Enter your height in feet"
             type="number"
+            value={height}
+            onChange={(e) => setHeight(e.target.value)}
           />
           <TextField
             id="outlined-basic"
@@ -104,6 +135,8 @@ const UserDetails = () => {
             className={classes.textField}
             placeholder="Enter your weight in Kgs"
             type="number"
+            value={weight}
+            onChange={(e) => setWeight(e.target.value)}
           />
         </div>
         <button type="submit">
