@@ -12,6 +12,7 @@ const theme = {
     lightBlue: '#39A2DB',
     lightestBlue: '#78DEC7',
     white: '#fff',
+    whiteDark: '##fbfbfb',
     grey1: '#C9D8B6',
     grey2: '#B2B1B9',
     grey3: '#C6B4CE',

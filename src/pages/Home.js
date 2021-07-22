@@ -76,7 +76,7 @@ const StyledCircle = styled.div`
     right: -12%;
     width: 250px;
     height: 250px;
-    background: linear-gradient(to right, ${colors.orange}, ${colors.lightestBlue});
+    background: linear-gradient(to right, ${colors.grey3}, ${colors.lightestBlue});
     opacity: 1;
     animation-duration: 4s;
   }
@@ -85,7 +85,7 @@ const StyledCircle = styled.div`
     right: 30%;
     width: 150px;
     height: 150px;
-    background: linear-gradient(to right, ${colors.orange}, ${colors.lightBlue});
+    background: linear-gradient(to right, ${colors.grey3}, ${colors.lightBlue});
     opacity: 0.6;
   }
 `;
@@ -113,18 +113,13 @@ const StyledHomeInfo = styled.section`
     margin-top: 30px;
     ${mixins.blueButton};
     ${mixins.flexCenter};
-    border-radius: 5px;
-    svg {
-      margin-left: 10px;
-      font-size: 1.4em;
-    }
   }
 `;
 
 const Home = () => {
   const history = useHistory();
   const StartAnalyserOnClick = () => {
-    history.push('/upload-video');
+    history.push('/enter-your-details');
   };
   return (
     <HomeContainer>

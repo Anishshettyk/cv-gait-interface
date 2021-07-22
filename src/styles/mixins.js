@@ -31,15 +31,24 @@ const mixins = {
     -webkit-box-shadow: 0px 1px 1px 0px ${colors.rgbaBlack01};
     -moz-box-shadow: 0px 1px 1px 0px ${colors.rgbaBlack01};
   `,
+  SmallShadow: css`
+    box-shadow: 0px 0px 15px 0 rgb(0 0 0 / 10%), 0px 0px 15px 0 rgb(0 0 0 / 10%);
+    -webkit-box-shadow: 0px 0px 15px 0 rgb(0 0 0 / 10%), 0px 0px 15px 0 rgb(0 0 0 / 10%);
+    -moz-box-shadow: 0px 0px 15px 0 rgb(0 0 0 / 10%), 0px 0px 15px 0 rgb(0 0 0 / 10%);
+  `,
   blueButton: css`
     background: linear-gradient(to right, ${colors.blue}, ${colors.red});
     color: ${colors.white};
     padding: 15px 40px;
     font-size: 1.1em;
     font-weight: bold;
-    text-transform: uppercase;
     transition: transform 0.2s ease-in-out;
     cursor: pointer;
+    border-radius: 5px;
+    svg {
+      margin-left: 10px;
+      font-size: 1.4em;
+    }
     &:hover {
       background: linear-gradient(to right, ${colors.red}, ${colors.blue});
       svg {
