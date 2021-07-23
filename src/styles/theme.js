@@ -17,6 +17,7 @@ const theme = {
     grey2: '#B2B1B9',
     grey3: '#C6B4CE',
     rgbWhite095: 'rgba(255, 255, 255, 0.95)',
+    rgbWhite030: 'rgba(255, 255, 255, 0.30)',
     rgbaBlack01: 'rgba(0, 0, 0, 0.1)',
   },
   fontSizes: {
